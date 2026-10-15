@@ -23,6 +23,13 @@ sentences and leaves the rest of the ordering intact:
   lineage and random control, eight ledgers. Seed 11 ran on this machine's CPU, seeds 12 and
   13 on a rented cloud GPU under the same CUDA numerical path as the GPU host, so agreement
   across the three seeds is agreement across devices as well.
+- `code/ctrl_run.py` — the runner that produced the control arms, with one defect fixed. It
+  hardcoded the output directory and ignored the environment, so a run pointed at a new seed
+  wrote over the previous seed's ledgers in the default directory (the seed-13 arms landed in
+  the seed-11 directory on the run host; the shipped seed-11 ledgers were written on a
+  different machine and are untouched). `OUTD` is honoured now, the way `real_run.py` honours
+  it, and a short run with `POP=6 GENS=1 ROUNDS=10` into a scratch directory confirms the
+  ledgers land where `OUTD` says.
 - **A bound we published in v5 is falsified by our own new data.** v5 wrote that inside an
   arm the two lineages diverge more than the seeds do. On three seeds the coin arm's
   across-seed spread (**465**) exceeds its largest within-arm divergence (**243**); the
