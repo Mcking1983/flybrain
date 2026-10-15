@@ -1,0 +1,30 @@
+REAL SEED=11 POP=6 GENS=6 ROUNDS=30 FOOD=12.0 CSYN=0.0003 OUTD=/root/flybrain/ctrl/s11real
+/root/flybrain/fly_select.py:104: UserWarning: Sparse invariant checks are implicitly disabled. Memory errors (e.g. SEGFAULT) will occur when operating on a sparse tensor which violates the invariants, but checks incur performance overhead. To silence this warning, explicitly opt in or out. See `torch.sparse.check_sparse_tensor_invariants.__doc__` for guidance.  (Triggered internally at /pytorch/aten/src/ATen/Context.cpp:760.)
+  return torch.sparse_csr_tensor(torch.from_numpy(m.indptr.astype(np.int64)),torch.from_numpy(m.indices.astype(np.int64)),torch.from_numpy(m.data),size=(N,N)).to(dev)
+/root/flybrain/fly_select.py:104: UserWarning: Sparse CSR tensor support is in beta state. If you miss a functionality in the sparse tensor support, please submit a feature request to https://github.com/pytorch/pytorch/issues. (Triggered internally at /pytorch/aten/src/ATen/SparseCsrTensorImpl.cpp:49.)
+  return torch.sparse_csr_tensor(torch.from_numpy(m.indptr.astype(np.int64)),torch.from_numpy(m.indices.astype(np.int64)),torch.from_numpy(m.data),size=(N,N)).to(dev)
+[select] gen 0 | E_end mean   335.6 best   368.0 | meals  46.7 | D_gate -0.01 D_seek +0.01 | early(rd5) gate +0.01 seek +0.00 | time-to-gate   nan (0/6) time-to-seek   nan (0/6) | full-leak 0.07 | syn  2115
+          best genome: p_sprout=0.02, birth_per=200, cold_streak=10, eta=0.05, hot_decay=0.8, p_inh=0.331, k_syn=40, r_high=0.3
+[select] gen 1 | E_end mean   370.7 best   435.1 | meals  46.7 | D_gate +0.07 D_seek +0.06 | early(rd5) gate +0.00 seek +0.00 | time-to-gate  10.0 (1/6) time-to-seek  10.0 (1/6) | full-leak 0.04 | syn  1137
+          best genome: p_sprout=0.0215, birth_per=370, cold_streak=10, eta=0.0373, hot_decay=0.602, p_inh=0.188, k_syn=47, r_high=0.338
+[select] gen 2 | E_end mean   387.3 best   437.8 | meals  45.2 | D_gate +0.00 D_seek +0.00 | early(rd5) gate +0.00 seek +0.00 | time-to-gate   nan (0/6) time-to-seek   nan (0/6) | full-leak 0.02 | syn   846
+          best genome: p_sprout=0.0149, birth_per=424, cold_streak=9, eta=0.0496, hot_decay=0.6, p_inh=0.307, k_syn=60, r_high=0.394
+[select] gen 3 | E_end mean   406.9 best   450.2 | meals  45.8 | D_gate +0.01 D_seek +0.00 | early(rd5) gate +0.04 seek +0.03 | time-to-gate   nan (0/6) time-to-seek   nan (0/6) | full-leak 0.00 | syn   795
+          best genome: p_sprout=0.0409, birth_per=800, cold_streak=6, eta=0.0396, hot_decay=0.785, p_inh=0.149, k_syn=35, r_high=0.424
+[select] gen 4 | E_end mean   420.5 best   447.8 | meals  47.0 | D_gate +0.00 D_seek +0.00 | early(rd5) gate +0.00 seek +0.00 | time-to-gate  10.0 (1/6) time-to-seek  10.0 (1/6) | full-leak 0.10 | syn   781
+          best genome: p_sprout=0.0409, birth_per=800, cold_streak=6, eta=0.0396, hot_decay=0.785, p_inh=0.149, k_syn=35, r_high=0.424
+[select] gen 5 | E_end mean   366.4 best   433.9 | meals  47.5 | D_gate +0.01 D_seek +0.17 | early(rd5) gate +0.01 seek +0.00 | time-to-gate   nan (0/6) time-to-seek  30.0 (1/6) | full-leak 0.12 | syn  1752
+          best genome: p_sprout=0.0433, birth_per=800, cold_streak=7, eta=0.0337, hot_decay=0.655, p_inh=0.247, k_syn=42, r_high=0.5
+[random] gen 0 | E_end mean   326.2 best   342.6 | meals  47.2 | D_gate +0.03 D_seek +0.01 | early(rd5) gate +0.01 seek +0.00 | time-to-gate   nan (0/6) time-to-seek   nan (0/6) | full-leak 0.14 | syn  2086
+          best genome: p_sprout=0.02, birth_per=200, cold_streak=10, eta=0.05, hot_decay=0.8, p_inh=0.331, k_syn=40, r_high=0.3
+[random] gen 1 | E_end mean   349.4 best   247.5 | meals  48.8 | D_gate +0.03 D_seek +0.02 | early(rd5) gate +0.01 seek +0.00 | time-to-gate   nan (0/6) time-to-seek   nan (0/6) | full-leak 0.13 | syn  2087
+          best genome: p_sprout=0.0146, birth_per=384, cold_streak=14, eta=0.0449, hot_decay=0.95, p_inh=0.6, k_syn=60, r_high=0.15
+[random] gen 2 | E_end mean   317.3 best   252.3 | meals  50.5 | D_gate +0.03 D_seek +0.12 | early(rd5) gate +0.04 seek +0.05 | time-to-gate   5.0 (1/6) time-to-seek   5.0 (1/6) | full-leak 0.14 | syn  2555
+          best genome: p_sprout=0.0451, birth_per=155, cold_streak=6, eta=0.0825, hot_decay=0.95, p_inh=0.162, k_syn=40, r_high=0.257
+[random] gen 3 | E_end mean   326.8 best   335.9 | meals  52.5 | D_gate +0.06 D_seek +0.30 | early(rd5) gate +0.00 seek +0.00 | time-to-gate  15.0 (1/6) time-to-seek  25.0 (2/6) | full-leak 0.24 | syn  2740
+          best genome: p_sprout=0.0272, birth_per=241, cold_streak=7, eta=0.0692, hot_decay=0.748, p_inh=0.146, k_syn=48, r_high=0.238
+[random] gen 4 | E_end mean   378.1 best   332.4 | meals  47.5 | D_gate +0.02 D_seek +0.00 | early(rd5) gate +0.10 seek +0.06 | time-to-gate  16.7 (3/6) time-to-seek  15.0 (2/6) | full-leak 0.06 | syn  1066
+          best genome: p_sprout=0.0144, birth_per=189, cold_streak=12, eta=0.0408, hot_decay=0.6, p_inh=0.317, k_syn=46, r_high=0.5
+[random] gen 5 | E_end mean   378.7 best   367.4 | meals  46.3 | D_gate +0.00 D_seek +0.00 | early(rd5) gate -0.00 seek +0.00 | time-to-gate   nan (0/6) time-to-seek  25.0 (1/6) | full-leak 0.05 | syn   915
+          best genome: p_sprout=0.013, birth_per=183, cold_streak=14, eta=0.0322, hot_decay=0.731, p_inh=0.28, k_syn=35, r_high=0.5
+DONE real
