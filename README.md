@@ -1,18 +1,35 @@
 # A Drosophila connectome substrate inside an LLM agent
 
 **Evidence package** for the preprint. Every figure and every table in `paper/` is
-re-derivable from `data/` by `code/paper_draft_v5.py` (English) and
-`code/paper_draft_v5_zh.py` (Chinese). The ledgers are shipped byte-identical to the ones
+re-derivable from `data/` by `code/paper_draft_v6.py` (English) and
+`code/paper_draft_v6_zh.py` (Chinese). The ledgers are shipped byte-identical to the ones
 the paper read.
 
-Preprint: **DOI [10.5281/zenodo.23397998](https://doi.org/10.5281/zenodo.23397998)**
-(v5, published 2026-10-15, resource type Preprint, CC BY 4.0; the English and Chinese
+Preprint: **DOI [10.5281/zenodo.23400616](https://doi.org/10.5281/zenodo.23400616)**
+(v6, published 2026-10-16, resource type Preprint, CC BY 4.0; the English and Chinese
 editions are the two files of that record, and both are also in `paper/`). All versions:
 **DOI [10.5281/zenodo.23396755](https://doi.org/10.5281/zenodo.23396755)**.
 
 > Luan, B. (2026). *A Drosophila connectome substrate inside an LLM agent: what it gates,
-> what it does not, and what it costs* (Version v5). Zenodo.
-> https://doi.org/10.5281/zenodo.23397998 — author ORCID 0009-0001-5836-2923
+> what it does not, and what it costs* (Version v6). Zenodo.
+> https://doi.org/10.5281/zenodo.23400616 — author ORCID 0009-0001-5836-2923
+
+## What v6 added
+
+The real-brain lineage is now measured on its own seed for both seeds, so the two-seed
+claims compare like with like:
+
+- `data/mac/ctrl/s12/ctrl_real_evolve_desire_{select,random}.json` — the unmodified brain,
+  seed 12, on the cloud device: selection lineage ends at **348** mean energy (6/6 flies
+  above zero, 47.5 meals), random control at **409** (6/6, 46.5 meals).
+- `data/mac/ctrl/s11real/ctrl_real_evolve_desire_{select,random}.json` — the same brain at
+  seed 11 on the cloud device: **366** (6/6, 47.5 meals) against the original host's **359**
+  (6/6, 49.0 meals). Seed, population, world and code are held fixed, so that gap is the
+  device effect at n=6 and it is the noise floor for every cross-device number in the paper.
+  The ordering against the lesion arms survives it.
+- `code/real_run.py` — the runner that produced both cells, with the environment it needs.
+- The paper gained a References section naming the substrate sources with their DOIs, and
+  Table 6, Table 6b and Fig 7 carry the new rows and curves.
 
 ## What was tested
 
@@ -42,9 +59,11 @@ only in the paper.
 - **Attribution obligation.** The release is CC BY (attribution required), so the substrate
   is cited wherever these numbers are quoted and any change we made to the graph is stated —
   which is what the bullet above does. The binding terms and the preferred citation live on
-  the release page and in the accompanying paper's data-availability statement; the exact
-  article DOI is carried in the reference list of any derivative work and will be attached to
-  the Zenodo record as a related identifier. Check the terms before commercial reuse.
+  the release page and in the accompanying paper's data-availability statement. Since v6 the
+  paper carries a References section with the article DOI
+  ([10.1016/j.cell.2026.08.015](https://doi.org/10.1016/j.cell.2026.08.015)) and the release
+  page is attached to the Zenodo record as a `Cites` related identifier. Check the terms
+  before commercial reuse.
 - **What is ours.** Wiring the substrate into an LLM agent loop, the gate measurement and
   its contrast readout, the token-cost accounting, the lesion controls, and the three roles
   the substrate was hoped to fill and did not.
