@@ -63,8 +63,8 @@ find "$STAGE/code" -type f \( -name '*.py' -o -name '*.sh' \) -print0 |
     -e 's/(Bearer )[A-Za-z0-9_.\-]{12,}/\1<REDACTED_TOKEN>/g' \
     -e 's/192\.168\.1\.[0-9]{1,3}/<LAN_HOST>/g' \
     -e 's/connect\.west[a-z]*\.seetacloud\.com/<CLOUD_HOST>/g' \
-    -e 's/bk6CCvZNvn3X/<REDACTED_PASSWORD>/g' \
-    -e 's#/srv/fast/flybrain#<DATA_ROOT>#g'
+    -e 's/<CLOUD_PASSWORD>/<REDACTED_PASSWORD>/g' \
+    -e 's#<DATA_ROOT>#<DATA_ROOT>#g'
 
 # ---------------- ledgers are scanned, never rewritten ----------------
 LEDGER_HITS=$(grep -rlE 'sk-[A-Za-z0-9]{20,}|gh[pousr]_[A-Za-z0-9]{20,}' "$STAGE/data" 2>/dev/null | wc -l | tr -d ' ' || true)
