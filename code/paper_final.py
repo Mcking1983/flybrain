@@ -312,12 +312,12 @@ def table(caption, rows, widths):
 
 pdf.add_page()
 title("A Drosophila connectome substrate inside an LLM agent: what it gates, what it does not, and what it costs")
-it("Draft v7 - 2026-10-16. Applied case study with full cost accounting, negative results and "
+it("Final revision - 2026-10-16. Applied case study with full cost accounting, negative results and "
    "control arms on three seeds. All numbers re-derived from the artifact corpus on the authors' machine.")
-it("v7: the control arms and the real-brain lineage now run on a third seed, which moves two sentences. "
+it("This revision: the control arms and the real-brain lineage now run on a third seed, which moves two sentences. "
    "The coin-flip arm's selection lineage is energy-negative on two of the three seeds (it turns positive "
    "on the third), and on that arm the across-seed spread is larger than the within-arm divergence between "
-   "the selected and random lineages, so the v5 bound drawn from two seeds is restated with three-seed "
+   "the selected and random lineages, so the bound drawn from two seeds is restated with three-seed "
    "numbers. Everything that held on two seeds - rewired over real brain, real brain over coin-flip, zero "
    "meals with the connectome zeroed - holds on three.")
 
@@ -408,7 +408,7 @@ p("A 24-fly population forages in an energy economy (food episodes, meals, starv
   "evolution is re-derived here from the run ledgers: lineage 1 lifted survival from 13/24 (gen 0) to "
   "24/24 (gen 9) with mean energy 143.3 to 965.3 (6.7x); an independent lineage 2 reproduced the shape "
   "(13/24 to 24/24, mean energy 143.3 to 833.0, 5.8x); a 20-generation plateau run carried mean energy "
-  "512.0 to 3897.3 (7.6x). The gen-9 checkpoint shipped with this draft verifies 24/24 flies alive. "
+  "512.0 to 3897.3 (7.6x). The gen-9 checkpoint shipped with this paper verifies 24/24 flies alive. "
   "Transfer: the gen-9 population in an unseen world seed scored 24/24 with higher mean energy than at "
   "home.")
 p("Selection-vs-random controls exist for five configurations (6 generations, 6-8 flies each; "
@@ -688,5 +688,5 @@ ref("[3] Luan, B. (2026). A Drosophila connectome substrate inside an LLM agent:
     "this version is on the record page). ORCID 0009-0001-5836-2923. Evidence package (paper, ledgers and "
     "the scripts that re-derive every number): https://github.com/Mcking1983/flybrain")
 
-pdf.output(f"{OUTD}/flybrain_paper_draft_v7.pdf")
-print("PDF:", f"{OUTD}/flybrain_paper_draft_v7.pdf", os.path.getsize(f"{OUTD}/flybrain_paper_draft_v7.pdf"), "bytes")
+pdf.output(f"{OUTD}/flybrain_paper_final.pdf")
+print("PDF:", f"{OUTD}/flybrain_paper_final.pdf", os.path.getsize(f"{OUTD}/flybrain_paper_final.pdf"), "bytes")

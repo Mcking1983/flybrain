@@ -1,20 +1,19 @@
 # A Drosophila connectome substrate inside an LLM agent
 
 **Evidence package** for the preprint. Every figure and every table in `paper/` is
-re-derivable from `data/` by `code/paper_draft_v7.py` (English) and
-`code/paper_draft_v7_zh.py` (Chinese). The ledgers are shipped byte-identical to the ones
+re-derivable from `data/` by `code/paper_final.py`. The ledgers are shipped byte-identical to the ones
 the paper read.
 
 Preprint: **DOI [10.5281/zenodo.23402098](https://doi.org/10.5281/zenodo.23402098)**
-(v7, published 2026-10-16, resource type Preprint, CC BY 4.0; the English and Chinese
-editions are the two files of that record, and both are also in `paper/`). All versions:
+(published 2026-10-16, resource type Preprint, CC BY 4.0; the record carries one file,
+the English PDF, also in `paper/`). All versions:
 **DOI [10.5281/zenodo.23396755](https://doi.org/10.5281/zenodo.23396755)**.
 
 > Luan, B. (2026). *A Drosophila connectome substrate inside an LLM agent: what it gates,
-> what it does not, and what it costs* (Version v7). Zenodo.
+> what it does not, and what it costs* (Final revision). Zenodo.
 > https://doi.org/10.5281/zenodo.23402098 — author ORCID 0009-0001-5836-2923
 
-## What v7 added
+## What this revision added
 
 Every control arm and the real-brain lineage now run on a **third seed**, which moves two
 sentences and leaves the rest of the ordering intact:
@@ -136,19 +135,18 @@ total; the difference is bodies without a `superclass` annotation, which the sta
   `ctrl/s11real/` — the seed-11 real brain re-run on the cloud device, the device-effect cell).
 - `data/195/` — ledgers from the GPU host mirror: gate evolution, architecture ablation,
   economy gate, governor paired runs, teaching lineages.
-- `paper/` — the deposited PDFs (English and Chinese). Regenerated figures land in
+- `paper/` — the deposited PDF (English). Regenerated figures land in
   `paper/figures/`.
 
 ## Reproducing the numbers
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install numpy scipy matplotlib fpdf2
-.venv/bin/python code/paper_draft_v7.py      # -> paper/figures/*.png and the PDF
+.venv/bin/python code/paper_final.py         # -> the PDF and the regenerated figures
 ```
 
-Paths resolve relative to the repository, so no editing is needed. The Chinese edition
-(`code/paper_draft_v7_zh.py`) exec's the English data section, so both languages carry
-identical numbers; it needs the system CJK font `Arial Unicode.ttf`.
+`BASE` (the artifact corpus) and `OUTD` (the output directory) are set at the top of the
+script; point `BASE` at this repository's `data/` tree and the numbers re-derive as is.
 
 ## What is deliberately not in this repository
 
