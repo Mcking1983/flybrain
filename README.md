@@ -12,7 +12,7 @@ editions are the two files of that record, and both are also in `paper/`). All v
 
 > Luan, B. (2026). *A Drosophila connectome substrate inside an LLM agent: what it gates,
 > what it does not, and what it costs* (Version v5). Zenodo.
-> https://doi.org/10.5281/zenodo.23397998
+> https://doi.org/10.5281/zenodo.23397998 — author ORCID 0009-0001-5836-2923
 
 ## What was tested
 
