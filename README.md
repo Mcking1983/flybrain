@@ -24,23 +24,25 @@ model otherwise.
 The connectome is not our contribution; the measurements are. Stating that in the repo, not
 only in the paper.
 
-- **Source.** MaleCNS v1.0 — the public release of the adult male *Drosophila* central
-  nervous system connectome, served from the public neuprint and DVID servers (the same
-  source the `natverse/malecns` tooling wraps). The files this project built from are
-  `body-annotations-male-cns-v1.0-minconf-0.5.feather`,
+- **Source.** The **Janelia FlyEM male CNS connectome**, used through its public read-only
+  snapshot `male-cns:v1.0` served by neuprint/DVID — the same release the
+  [`natverse/malecns`](https://github.com/natverse/malecns) tooling wraps. Release page:
+  <https://www.janelia.org/project-team/flyem/male-cns-connectome>. The files this project
+  built from are `body-annotations-male-cns-v1.0-minconf-0.5.feather`,
   `body-neurotransmitters-male-cns-v1.0.feather` and
   `connectome-weights-male-cns-v1.0-minconf-0.5.feather`. The published release carries
-  169,700 neurons.
+  about 169,700 neurons.
 - **Our build.** `code/build_graph.py` keeps only bodies carrying a `superclass` annotation,
   which yields **166,700 neurons and 25,582,938 retained synapses**. The neurotransmitter
   sign policy (acetylcholine +1, GABA/glutamate −1, everything else 0) and the edge-weight
   normalisation are stated assumptions of this project, written into the build script —
   properties of our graph, not of the source data.
-- **Attribution obligation.** The release is open-licensed with an attribution requirement,
-  so the substrate is cited wherever these numbers are quoted. The exact release DOI and
-  licence terms belong in the reference list of any derivative work and will be attached to
-  the Zenodo record as a related identifier in the next version. Verify the terms before
-  commercial reuse.
+- **Attribution obligation.** The release is CC BY (attribution required), so the substrate
+  is cited wherever these numbers are quoted and any change we made to the graph is stated —
+  which is what the bullet above does. The binding terms and the preferred citation live on
+  the release page and in the accompanying paper's data-availability statement; the exact
+  article DOI is carried in the reference list of any derivative work and will be attached to
+  the Zenodo record as a related identifier. Check the terms before commercial reuse.
 - **What is ours.** Wiring the substrate into an LLM agent loop, the gate measurement and
   its contrast readout, the token-cost accounting, the lesion controls, and the three roles
   the substrate was hoped to fill and did not.
