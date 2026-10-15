@@ -5,14 +5,14 @@ re-derivable from `data/` by `code/paper_draft_v5.py` (English) and
 `code/paper_draft_v5_zh.py` (Chinese). The ledgers are shipped byte-identical to the ones
 the paper read.
 
-Preprint: **DOI [10.5281/zenodo.23397763](https://doi.org/10.5281/zenodo.23397763)**
-(v4, published 2026-10-15, resource type Preprint, CC BY 4.0; a v5 draft with the random
-control lineages is in `paper/`). All versions:
+Preprint: **DOI [10.5281/zenodo.23397998](https://doi.org/10.5281/zenodo.23397998)**
+(v5, published 2026-10-15, resource type Preprint, CC BY 4.0; the English and Chinese
+editions are the two files of that record, and both are also in `paper/`). All versions:
 **DOI [10.5281/zenodo.23396755](https://doi.org/10.5281/zenodo.23396755)**.
 
 > Luan, B. (2026). *A Drosophila connectome substrate inside an LLM agent: what it gates,
-> what it does not, and what it costs* (Version v4). Zenodo.
-> https://doi.org/10.5281/zenodo.23397763
+> what it does not, and what it costs* (Version v5). Zenodo.
+> https://doi.org/10.5281/zenodo.23397998
 
 ## What was tested
 
