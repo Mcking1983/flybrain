@@ -1,16 +1,18 @@
 # A Drosophila connectome substrate inside an LLM agent
 
 **Evidence package** for the preprint. Every figure and every table in `paper/` is
-re-derivable from `data/` by `code/paper_draft_v3.py` (English) and
-`code/paper_draft_v3_zh.py` (Chinese). The ledgers are shipped byte-identical to the ones
+re-derivable from `data/` by `code/paper_draft_v5.py` (English) and
+`code/paper_draft_v5_zh.py` (Chinese). The ledgers are shipped byte-identical to the ones
 the paper read.
 
-Preprint: **DOI [10.5281/zenodo.23396756](https://doi.org/10.5281/zenodo.23396756)**
-(v3, published 2026-10-15, resource type Preprint, CC BY 4.0).
+Preprint: **DOI [10.5281/zenodo.23397763](https://doi.org/10.5281/zenodo.23397763)**
+(v4, published 2026-10-15, resource type Preprint, CC BY 4.0; a v5 draft with the random
+control lineages is in `paper/`). All versions:
+**DOI [10.5281/zenodo.23396755](https://doi.org/10.5281/zenodo.23396755)**.
 
 > Luan, B. (2026). *A Drosophila connectome substrate inside an LLM agent: what it gates,
-> what it does not, and what it costs* (Version v3). Zenodo.
-> https://doi.org/10.5281/zenodo.23396756
+> what it does not, and what it costs* (Version v4). Zenodo.
+> https://doi.org/10.5281/zenodo.23397763
 
 ## What was tested
 
@@ -58,7 +60,8 @@ only in the paper.
 | The economy gate is real | Satiety-gated feeding 8/8 survivals vs always-feeding 0/8 | 6 cells × 4 flies, upkeep 3e-4 |
 | Closed-loop evolution works in the foraging world | 13/24 alive at generation 0 → 24/24 at generation 9 on two independent lineages (mean energy 6.7× and 5.8×); transfer to an unseen world seed 24/24 | 6 flies, 6 generations |
 | Three candidate roles are dead, by measurement | Recursive memory horizon 1–2 steps; input relay equivalent to a linear copy (R² 0.91–0.96); zero channel margin under superposed cues (margin 0.0000) | 72-sample falsification of the decision-layer hypothesis (18 tasks × 4 amplitudes, 18 classes, chance 0.056) |
-| Lesion controls (seed 11, final generation) | no-brain −230.7 E, 5/6 alive, 0.0 meals; rewired +704.8, 6/6, 72.8 meals (full-leak 1.00, gate dead); coin-flip −373.2, 5/6, 44.3 meals (gate 0.47); real brain +359.2, 6/6, 49.0 meals | Same economy and budget (upkeep 3e-4, meal 12), only the brain changes; 6 flies, 6 generations, seed 11. Seed 12 replication in progress |
+| Lesion controls, two seeds (final generation) | no-brain −231 / −151 E, meals **0.0 / 0.0**; rewired **+705 / +762**, 6/6, meals 72.8 / 75.7 (gate dead: mean D_gate 0.00, full-leak 1.00); coin-flip −373 / −50, meals 44.3 / 45.2; real brain +359, 6/6, 49.0 | Same economy and budget (upkeep 3e-4, meal 12), only the brain changes; 6 flies, 6 generations; seed 11 on CPU, seed 12 on a cloud GPU under the 195 CUDA path |
+| Selection is not the driver inside the control arms | the random control lineage flips the coin-flip arm's sign on seed 12 (−50 selected, **+111** random); the no-brain arm ends −151 selected and +0.5 random, both with zero meals | Table 6b: every arm also ran its random control (no selection, same economy) on both seeds. Inside an arm the two lineages disagree more than the two seeds do, which bounds how much of Table 6 may be attributed to selection |
 
 ## Erratum found after the v3 deposit
 
@@ -83,10 +86,12 @@ total; the difference is bodies without a `superclass` annotation, which the sta
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install numpy scipy matplotlib fpdf2
-.venv/bin/python code/paper_draft_v3.py      # -> paper/figures/*.png and the PDF
+.venv/bin/python code/paper_draft_v5.py      # -> paper/figures/*.png and the PDF
 ```
 
-Paths resolve relative to the repository, so no editing is needed.
+Paths resolve relative to the repository, so no editing is needed. The Chinese edition
+(`code/paper_draft_v5_zh.py`) exec's the English data section, so both languages carry
+identical numbers; it needs the system CJK font `Arial Unicode.ttf`.
 
 ## What is deliberately not in this repository
 

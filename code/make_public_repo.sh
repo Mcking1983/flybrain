@@ -25,7 +25,7 @@ mkdir -p "$STAGE/code" "$STAGE/data/mac/ctrl" "$STAGE/data/mac/apps" "$STAGE/dat
 
 # ---------------- code: analysis + paper builder + graph provenance ----------------
 cp "$SRC"/analyze_*.py "$STAGE/code/"
-cp "$SRC"/paper_draft_v3.py "$SRC"/paper_draft_v3_zh.py "$STAGE/code/"
+cp "$SRC"/paper_draft_v5.py "$SRC"/paper_draft_v5_zh.py "$STAGE/code/"
 cp "$SRC"/build_graph.py "$STAGE/code/"
 cp "$SRC"/make_public_repo.sh "$STAGE/code/"
 
@@ -63,8 +63,8 @@ find "$STAGE/code" -type f \( -name '*.py' -o -name '*.sh' \) -print0 |
     -e 's/(Bearer )[A-Za-z0-9_.\-]{12,}/\1<REDACTED_TOKEN>/g' \
     -e 's/192\.168\.1\.[0-9]{1,3}/<LAN_HOST>/g' \
     -e 's/connect\.west[a-z]*\.seetacloud\.com/<CLOUD_HOST>/g' \
-    -e 's/<REDACTED_PASSWORD>/<REDACTED_PASSWORD>/g' \
-    -e 's#<DATA_ROOT>#<DATA_ROOT>#g'
+    -e 's/bk6CCvZNvn3X/<REDACTED_PASSWORD>/g' \
+    -e 's#/srv/fast/flybrain#<DATA_ROOT>#g'
 
 # ---------------- ledgers are scanned, never rewritten ----------------
 LEDGER_HITS=$(grep -rlE 'sk-[A-Za-z0-9]{20,}|gh[pousr]_[A-Za-z0-9]{20,}' "$STAGE/data" 2>/dev/null | wc -l | tr -d ' ' || true)
@@ -83,7 +83,7 @@ head = 'REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))\n'
 OUTD = (r'^OUTD = os\.path\.expanduser\("~/Downloads/flybrain-paper"\)$',
         'OUTD = os.path.join(REPO, "paper", "figures")')
 subs = {
-    "paper_draft_v3.py": [
+    "paper_draft_v5.py": [
         (r'^BASE = os\.path\.expanduser\("~/flybrain"\)$',
          'BASE = os.path.join(REPO, "data", "mac")'),
         (r'^CTRLO = os\.path\.expanduser\("~/flybrain/ctrl"\)$',
@@ -93,17 +93,17 @@ subs = {
         OUTD,
     ],
     # the Chinese edition exec's the English data section, so it only carries OUTD
-    "paper_draft_v3_zh.py": [OUTD],
+    "paper_draft_v5_zh.py": [OUTD],
 }
-for name in ("paper_draft_v3.py", "paper_draft_v3_zh.py"):
+for name in ("paper_draft_v5.py", "paper_draft_v5_zh.py"):
     path = os.path.join(stage, "code", name)
     text = open(path).read()
     for pat, rep in subs[name]:
         text, n = re.subn(pat, rep, text, flags=re.M)
         if n != 1:
             sys.exit(f"{name}: pattern {pat} matched {n} times, expected 1")
-    text = text.replace('open(os.path.expanduser("~/flybrain/paper_draft_v3.py"))',
-                        'open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "paper_draft_v3.py"))')
+    text = text.replace('open(os.path.expanduser("~/flybrain/paper_draft_v5.py"))',
+                        'open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "paper_draft_v5.py"))')
     if "REPO = os.path.dirname" not in text:
         lines = text.split("\n")
         i = next(k for k, l in enumerate(lines) if l.startswith(("BASE = os.path.join(REPO", "OUTD = os.path.join(REPO")))
@@ -129,6 +129,6 @@ git add -A
 git -c user.name="Boxiang Luan" -c user.email="Mcking1983@users.noreply.github.com" \
   commit -q -m "flybrain evidence package: analysis code, ledgers, deposited paper
 
-Every figure and table in paper/ is re-derivable from data/ by code/paper_draft_v3.py.
+Every figure and table in paper/ is re-derivable from data/ by code/paper_draft_v5.py.
 Preprint: DOI 10.5281/zenodo.23396756"
 echo "staged $(find "$STAGE" -type f -not -path '*/.git/*' | wc -l | tr -d ' ') files, $(du -sh "$STAGE" | cut -f1)"
