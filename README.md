@@ -1,18 +1,47 @@
 # A Drosophila connectome substrate inside an LLM agent
 
 **Evidence package** for the preprint. Every figure and every table in `paper/` is
-re-derivable from `data/` by `code/paper_draft_v6.py` (English) and
-`code/paper_draft_v6_zh.py` (Chinese). The ledgers are shipped byte-identical to the ones
+re-derivable from `data/` by `code/paper_draft_v7.py` (English) and
+`code/paper_draft_v7_zh.py` (Chinese). The ledgers are shipped byte-identical to the ones
 the paper read.
 
-Preprint: **DOI [10.5281/zenodo.23400616](https://doi.org/10.5281/zenodo.23400616)**
-(v6, published 2026-10-16, resource type Preprint, CC BY 4.0; the English and Chinese
+Preprint: **DOI [10.5281/zenodo.23402098](https://doi.org/10.5281/zenodo.23402098)**
+(v7, published 2026-10-16, resource type Preprint, CC BY 4.0; the English and Chinese
 editions are the two files of that record, and both are also in `paper/`). All versions:
 **DOI [10.5281/zenodo.23396755](https://doi.org/10.5281/zenodo.23396755)**.
 
 > Luan, B. (2026). *A Drosophila connectome substrate inside an LLM agent: what it gates,
-> what it does not, and what it costs* (Version v6). Zenodo.
-> https://doi.org/10.5281/zenodo.23400616 — author ORCID 0009-0001-5836-2923
+> what it does not, and what it costs* (Version v7). Zenodo.
+> https://doi.org/10.5281/zenodo.23402098 — author ORCID 0009-0001-5836-2923
+
+## What v7 added
+
+Every control arm and the real-brain lineage now run on a **third seed**, which moves two
+sentences and leaves the rest of the ordering intact:
+
+- `data/mac/ctrl/s13/` — seed 13: the three lesion arms and the unmodified brain, selection
+  lineage and random control, eight ledgers. Seed 11 ran on this machine's CPU, seeds 12 and
+  13 on a rented cloud GPU under the same CUDA numerical path as the GPU host, so agreement
+  across the three seeds is agreement across devices as well.
+- **A bound we published in v5 is falsified by our own new data.** v5 wrote that inside an
+  arm the two lineages diverge more than the seeds do. On three seeds the coin arm's
+  across-seed spread (**465**) exceeds its largest within-arm divergence (**243**); the
+  lesioned arm reads 159 against 152 and the rewired arm 58 against 44. The sentence is
+  restated per arm with those numbers.
+- **A sign flips.** The coin-flip arm's selection lineage is energy-negative on 2 of the 3
+  seeds (**−373 / −50 / +92**) while still gathering meals (44.3 / 45.2 / 45.5) — the sign of
+  a random gate's final energy is not stable at this population size, and the coin arm and the
+  lesion arm no longer rank against each other (coin below lesion on seed 11, above it on
+  seeds 12 and 13).
+- **What held on two seeds holds on three.** rewired > real brain > coin-flip by final mean
+  energy on all three seeds (rewired 705 / 762 / 762, real brain 359 / 348 / 374, coin-flip
+  −373 / −50 / 92), and the lesioned arm takes **0.0 meals** on all three seeds in both
+  lineages. The rewired-over-real-brain comparison now runs against a real-brain lineage on
+  its own seed every time.
+- Table 6 (15 rows), Table 6b (12 rows) and Fig 7 (three curves per arm) carry the new seed;
+  the Limitations device question now names the one cell that separates the seed effect from
+  the device effect — the unmodified brain at seed 11, **366** on the cloud device against
+  **359** on the original host, seed, population, world and code held fixed.
 
 ## What v6 added
 
@@ -79,8 +108,8 @@ only in the paper.
 | The economy gate is real | Satiety-gated feeding 8/8 survivals vs always-feeding 0/8 | 6 cells × 4 flies, upkeep 3e-4 |
 | Closed-loop evolution works in the foraging world | 13/24 alive at generation 0 → 24/24 at generation 9 on two independent lineages (mean energy 6.7× and 5.8×); transfer to an unseen world seed 24/24 | 6 flies, 6 generations |
 | Three candidate roles are dead, by measurement | Recursive memory horizon 1–2 steps; input relay equivalent to a linear copy (R² 0.91–0.96); zero channel margin under superposed cues (margin 0.0000) | 72-sample falsification of the decision-layer hypothesis (18 tasks × 4 amplitudes, 18 classes, chance 0.056) |
-| Lesion controls, two seeds (final generation) | no-brain −231 / −151 E, meals **0.0 / 0.0**; rewired **+705 / +762**, 6/6, meals 72.8 / 75.7 (gate dead: mean D_gate 0.00, full-leak 1.00); coin-flip −373 / −50, meals 44.3 / 45.2; real brain +359, 6/6, 49.0 | Same economy and budget (upkeep 3e-4, meal 12), only the brain changes; 6 flies, 6 generations; seed 11 on CPU, seed 12 on a cloud GPU under the 195 CUDA path |
-| Selection is not the driver inside the control arms | the random control lineage flips the coin-flip arm's sign on seed 12 (−50 selected, **+111** random); the no-brain arm ends −151 selected and +0.5 random, both with zero meals | Table 6b: every arm also ran its random control (no selection, same economy) on both seeds. Inside an arm the two lineages disagree more than the two seeds do, which bounds how much of Table 6 may be attributed to selection |
+| Lesion controls, three seeds (final generation) | no-brain −231 / −151 / −72 E, meals **0.0 / 0.0 / 0.0**; rewired **+705 / +762 / +762**, 6/6, meals 72.8 / 75.7 / 76.0 (gate dead: mean D_gate 0.00 on all three, full-leak 1.00); coin-flip −373 / −50 / +92, meals 44.3 / 45.2 / 45.5; real brain +359 / +348 / +374, 6/6, meals 49.0 / 47.5 / 45.5 | Same economy and budget (upkeep 3e-4, meal 12), only the brain changes; 6 flies, 6 generations; seed 11 on CPU, seeds 12 and 13 on a cloud GPU under the same CUDA numerical path as the GPU host. The ordering rewired > real brain > coin-flip holds on all three; the coin arm and the lesion arm do not rank against each other |
+| Selection is not the driver inside the control arms | the random control lineage flips the coin-flip arm's sign on two of three seeds (selected −373 / −50 / +92, random −131 / +111 / −74); the no-brain arm ends −231 / −151 / −72 selected and −136 / +1 / −177 random, all with zero meals | Table 6b: every arm also ran its random control (no selection, same economy) on all three seeds. Largest within-arm divergence 243 (coin), 152 (lesioned), 44 (rewired), against across-seed spreads of 465, 159 and 58 — on the coin arm the seed spread is the larger, which is the shape an arm with no structure to stabilise it should have. That bounds how much of Table 6 may be attributed to selection |
 
 ## Erratum found after the v3 deposit
 
@@ -95,7 +124,9 @@ total; the difference is bodies without a `superclass` annotation, which the sta
   only, no substrate imports) plus `build_graph.py`, which shows how the substrate graph was
   built from the published MaleCNS v1.0 flat-connectome files.
 - `data/mac/` — ledgers from the Mac-run line: three app-line arms
-  (`apps/harvest/<arm>/evo_ledger.jsonl`), the foraging lineages, the lesion controls (seed 11).
+  (`apps/harvest/<arm>/evo_ledger.jsonl`), the foraging lineages, and the control arms on
+  three seeds (`ctrl/` seed 11, `ctrl/s12/` seed 12, `ctrl/s13/` seed 13, plus
+  `ctrl/s11real/` — the seed-11 real brain re-run on the cloud device, the device-effect cell).
 - `data/195/` — ledgers from the GPU host mirror: gate evolution, architecture ablation,
   economy gate, governor paired runs, teaching lineages.
 - `paper/` — the deposited PDFs (English and Chinese). Regenerated figures land in
@@ -105,11 +136,11 @@ total; the difference is bodies without a `superclass` annotation, which the sta
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install numpy scipy matplotlib fpdf2
-.venv/bin/python code/paper_draft_v5.py      # -> paper/figures/*.png and the PDF
+.venv/bin/python code/paper_draft_v7.py      # -> paper/figures/*.png and the PDF
 ```
 
 Paths resolve relative to the repository, so no editing is needed. The Chinese edition
-(`code/paper_draft_v5_zh.py`) exec's the English data section, so both languages carry
+(`code/paper_draft_v7_zh.py`) exec's the English data section, so both languages carry
 identical numbers; it needs the system CJK font `Arial Unicode.ttf`.
 
 ## What is deliberately not in this repository
@@ -126,8 +157,10 @@ identical numbers; it needs the system CJK font `Arial Unicode.ttf`.
 
 ## Scope, stated plainly
 
-An empirical case study with negative results. Where a second seed has not run yet, the paper
-says so. The three roles the substrate was hoped to fill — decision layer, memory, input
+An empirical case study with negative results. Where a third seed has not run yet, the paper
+says so — the control arms and the real-brain lineage are at three, the applied task line and
+the GPU-host line are not. The three roles the substrate was hoped to fill — decision layer,
+memory, input
 relay — are each reported dead with their statistics. The headline is what a biological
 substrate buys an LLM agent, what it does not buy, and what the whole arrangement costs.
 
